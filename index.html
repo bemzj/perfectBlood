@@ -12,7 +12,8 @@
         <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
 	</head>
 	<body>
-		<!--<audio id="Jaudio"  preload autoplay="autoplay" loop="loop" src="music/bg.mp3" hidden="hidden"></audio >-->
+		<audio id="hit"  preload loop="loop" src="music/hit.mp3" hidden="hidden"></audio >
+		<audio id="Jaudio"  preload autoplay="autoplay" loop="loop" src="music/bg.mp3" hidden="hidden"></audio >
 		<div id="perfect"></div>
 		<script>
 			function audioAutoPlay(id,v){
@@ -30,7 +31,8 @@
 					    }
 			    }, false);
 			}
-//			audioAutoPlay('Jaudio');
+			audioAutoPlay('Jaudio');
+			audioAutoPlay('hit',0);
 			
 		</script>
 		<script type="text/javascript" src="js/resource.js" ></script>
