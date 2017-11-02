@@ -51,6 +51,7 @@ var gameImg = [
 	{path:'img/box09.png',type:'img',name:'box09'},//对话框9
 	{path:'img/box010.png',type:'img',name:'box010'},//对话框10
 	{path:'img/share.png',type:'img',name:'share'},//分享
+	{path:'img/shareTitle.png',type:'img',name:'shareTitle'},//分享语
 ]
 //全局变量
 var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween,num;

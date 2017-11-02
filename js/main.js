@@ -73,7 +73,7 @@ function startGame(result){
 		LTweenLite.to(loadText,1.0,{alpha:0});
 		LTweenLite.to(logo,1.0,{alpha:0,onComplete:function(){
 			//大话西游
-			var xiText = new setWrapText(0,0,36,"曾经有一份献血的机会放在我面前，我却没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。如果上天能够给我一个再来一次的机会，我会说：","black",false,540,true,52,3);
+			var xiText = new setWrapText(0,0,36,"曾经有一份献血的机会放在我面前，我却没有珍惜，等我失去的时候我才后悔莫及，人世间最痛苦的事莫过于此。如果上天能够给我一个再来一次的机会，我会说：","black",false,580,true,52,3);
 			xiText.x = rCenterWidth(xiText);
 			xiText.y = 820;
 			bkLayer.addChild(xiText);
@@ -443,7 +443,7 @@ function five(){
 	LTweenLite.to(life,1.0,{alpha:1.0})
 	var life = getBitmap(imgList['life']);
 	life.x = rCenterWidth(life);
-	
+	var speed = 3;
 	var sence021 = getBitmap(imgList['sence021']);
 	sence021.x = 48;
 	sence021.y = 158;
@@ -452,17 +452,17 @@ function five(){
 	box01.x = 400;
 	box01.y = 345;
 	bkLayer.addChild(box01);
-	var st01 = new setWrapText(435,375,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,190,true,28,5);
+	var st01 = new setWrapText(435,375,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,190,true,28,speed);
 	bkLayer.addChild(st01);
 	var vt01 =new setWrapText(690,100,28,"来自香港的何俊患白血病多年","black",false,32,true,32,3);
 	bkLayer.addChild(vt01);
-	var vt02 =new setWrapText(655,162,28,"终于等到了配型成功","black",false,32,true,32,3);
+	var vt02 =new setWrapText(655,100,28,"终于等到了配型成功","black",false,32,true,32,3);
 	bkLayer.addChild(vt02);
 	var sence022 = getBitmap(imgList['sence022']);
 	sence022.x = 48;
 	sence022.y = 544;
 	bkLayer.addChild(sence022);
-	var vt03 =new setWrapText(690,685,28,"配型成功前","black",false,32,true,32,3);
+	var vt03 =new setWrapText(690,607,28,"配型成功前","black",false,32,true,32,3);
 	bkLayer.addChild(vt03);
 	var vt04 =new setWrapText(655,607,28,"他只能靠药物维持生命","black",false,32,true,32,3);
 	bkLayer.addChild(vt04);
@@ -474,7 +474,7 @@ function five(){
 	box02.x = 350;
 	box02.y = 1060;
 	bkLayer.addChild(box02);
-	var st02 = new setWrapText(425,1098,22,"“等待的那五年里，我几乎看到了人生的尽头。但现在，谢谢你，给了我第二次生命！我会继续传播这种正能量。”","black",true,240,true,28,3);
+	var st02 = new setWrapText(425,1098,22,"“等待的那五年里，我几乎看到了人生的尽头。但现在，谢谢你，给了我第二次生命！我会继续传播这种正能量。”","black",true,240,true,28,speed);
 	bkLayer.addChild(st02);
 	var vt05 =new setWrapText(50,990,28,"手术中","black",false,150,true,32,3);
 	bkLayer.addChild(vt05);
@@ -504,7 +504,7 @@ function five(){
 				document.getElementById('hit').play();
 				st02.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
 					document.getElementById('hit').pause();
-					setTimeout(last,5000);
+					setTimeout(last,2000);
 				});
 			}});
 		});
@@ -533,17 +533,17 @@ function fiveTwo(){
 	bkLayer.addChild(sence011);
 	//box
 	var box01 = getBitmap(imgList['box01']);
-	box01.x = 420;
-	box01.y = 155;
+	box01.x = 430;
+	box01.y = 270;
 	bkLayer.addChild(box01);
+	var speed = 3;
 	
-	
-	var st01 = new setWrapText(465,190,22,"“是急性白血病，生命垂危，急需新鲜血小板，但血库不足。”","black",true,155,true,28,5);
+	var st01 = new setWrapText(475,305,22,"“是急性白血病，生命垂危，急需新鲜血小板，但血库不足。”","black",true,155,true,28,speed);
 	bkLayer.addChild(st01);
 	var vt01 =new setWrapText(705,85,28,"今年8月，育有两个孩子的小芳","black",false,28,true,32,3);
 	vt01.childList["0"].textAlign = 'center';
 	bkLayer.addChild(vt01);
-	var vt02 =new setWrapText(655,118,28,"发现身体不适，到医院检查","black",false,32,true,32,3);
+	var vt02 =new setWrapText(655,85,28,"发现身体不适，到医院检查","black",false,32,true,32,3);
 	bkLayer.addChild(vt02);
 	var sence012 = getBitmap(imgList['sence012']);
 	sence012.x = 48;
@@ -553,9 +553,9 @@ function fiveTwo(){
 	box02.x = 36;
 	box02.y = 175;
 	bkLayer.addChild(box02);
-	var st02 = new setWrapText(80,220,22,"“怎么办，我还有两个孩子需要照顾啊！”","black",true,140,true,28,3);
+	var st02 = new setWrapText(80,220,22,"“怎么办，我还有两个孩子需要照顾啊！”","black",true,140,true,28,speed);
 	bkLayer.addChild(st02);
-	var vt03 =new setWrapText(690,625,28,"亲友们通过朋友圈","black",false,32,true,32,3);
+	var vt03 =new setWrapText(690,607,28,"亲友们通过朋友圈","black",false,32,true,32,3);
 	bkLayer.addChild(vt03);
 	var vt04 =new setWrapText(655,607,28,"不断向社会各界求助","black",false,32,true,32,3);
 	bkLayer.addChild(vt04);
@@ -563,7 +563,7 @@ function fiveTwo(){
 	box03.x = 100;
 	box03.y = 505;
 	bkLayer.addChild(box03);
-	var st03 = new setWrapText(150,530,22,"“我们都是看到朋友圈来给小芳献血的，她一定要挺过去。”","black",true,160,true,26,3);
+	var st03 = new setWrapText(150,530,22,"“我们都是看到朋友圈来给小芳献血的，她一定要挺过去。”","black",true,160,true,26,speed);
 	bkLayer.addChild(st03);
 	var box04 = getBitmap(imgList['box04']);
 	box04.x = 465;
@@ -580,11 +580,11 @@ function fiveTwo(){
 	box05.x = 20;
 	box05.y = 900;
 	bkLayer.addChild(box05);
-	var vt05 =new setWrapText(690,1008,28,"在大家的帮助下","black",false,32,true,32,3);
+	var vt05 =new setWrapText(690,960,28,"在大家的帮助下","black",false,32,true,32,3);
 	bkLayer.addChild(vt05);
 	var vt06 =new setWrapText(655,960,28,"小芳的病情得到了缓解","black",false,32,true,32,3);
 	bkLayer.addChild(vt06);
-	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,3);
+	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st05);
 	
 	
@@ -638,7 +638,7 @@ function fiveTwo(){
 										document.getElementById('hit').play();
 										st05.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
 											document.getElementById('hit').pause();
-											setTimeout(last,5000);
+											setTimeout(last,2000);
 										});
 									}});
 								});
@@ -666,7 +666,7 @@ function fiveThree(){
 	LTweenLite.to(life,1.0,{alpha:1.0})
 	var life = getBitmap(imgList['life']);
 	life.x = rCenterWidth(life);
-	
+	var speed = 3;
 	var sence031 = getBitmap(imgList['sence031']);
 	sence031.x = 48;
 	sence031.y = 158;
@@ -676,7 +676,7 @@ function fiveThree(){
 	box01.x = 400;
 	box01.y = 220;
 	bkLayer.addChild(box01);
-	var st01 = new setWrapText(450,290,22,"“你父亲出了车祸，情况紧急必须马上手术，需要5000--6000毫升的O型血。但全市血库有限。”","black",true,250,true,28,5);
+	var st01 = new setWrapText(450,290,22,"“你父亲出了车祸，情况紧急必须马上手术，需要5000--6000毫升的O型血。但全市血库有限。”","black",true,250,true,28,speed);
 	bkLayer.addChild(st01);
 	
 	var vt01 =new setWrapText(58,130,28,"几年前，海南完美无偿献血","black",false,750,false,32,3);
@@ -694,7 +694,7 @@ function fiveThree(){
 	bkLayer.addChild(box02);
 	
 	
-	var st02 = new setWrapText(50,585,22,"“帮帮我，我爸出车祸进医院了，急需O型血。”","black",true,160,true,26,3);
+	var st02 = new setWrapText(50,585,22,"“帮帮我，我爸出车祸进医院了，急需O型血。”","black",true,160,true,26,speed);
 	bkLayer.addChild(st02);
 	var box03 = getBitmap(imgList['box07']);
 	box03.x = 505;
@@ -710,7 +710,7 @@ function fiveThree(){
 	vt05.x = rCenterWidth(vt05);
 	bkLayer.addChild(vt05);
 	
-	var st03 = new setWrapText(545,575,22,"“我们马上组织全省各地同血型的志愿者到医院献血。”","black",true,180,true,26,3);
+	var st03 = new setWrapText(545,575,22,"“我们马上组织全省各地同血型的志愿者到医院献血。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st03);
 	
 	var sence033 = getBitmap(imgList['sence033']);
@@ -725,7 +725,7 @@ function fiveThree(){
 	bkLayer.addChild(vt06);
 	var vt07 =new setWrapText(58,965,28,"自己会变成无偿献血的受益者。","black",false,750,false,32,3);
 	bkLayer.addChild(vt07);
-	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,3);
+	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,speed);
 	bkLayer.addChild(st04);
 	
 	
@@ -772,7 +772,7 @@ function fiveThree(){
 								document.getElementById('hit').play();
 								st04.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
 									document.getElementById('hit').pause();
-									setTimeout(last,5000);
+									setTimeout(last,2000);
 								});
 							}});
 						});
@@ -870,8 +870,17 @@ function share(){
 	shareLayer.graphics.drawRect(0, "#000000", [0, 0, 750,1336], true, 'rgba(0,0,0,0.75)');
 	backLayer.addChild(shareLayer);
 	var share = getBitmap(imgList['share']);
-	share.x = 0;
+	share.x = 400;//400
+	share.y = 20;//20
 	shareLayer.addChild(share);
+	LTweenLite.to(share,0.75,{x:380,y:40,loop:true}).to(share,0.75,{x:400,y:20});
+	
+	var shareTitle = getBitmap(imgList['shareTitle']);
+	shareTitle.x = rCenterWidth(shareTitle);//400
+	shareTitle.y = 500;//20
+	shareLayer.addChild(shareTitle);
+	bigAndSmall(shareTitle,2,2,1.5,0.1,0,true);
+	
 	shareLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
 		shareLayer.remove();
 	})
