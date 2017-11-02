@@ -6,9 +6,11 @@ var loadImg = [
 	{path:'img/back.jpg',type:'img',name:'back'},//背景图片
 	{path:'img/topImg.png',type:'img',name:'topImg'},//高光
 	{path:'img/flower.png',type:'img',name:'flower'},//花
+	{path:'img/music.png',type:'img',name:'music'},//音乐
 ]
 //加载的图片的资源
 var gameImg = [
+	{path:'img/music.png',type:'img',name:'music'},//音乐
 	{path:'img/logo.png',type:'img',name:'logo'},//完美logo
 	{path:'img/hand.png',type:'img',name:'hand'},//手
 	{path:'img/hand2.png',type:'img',name:'hand2'},//手

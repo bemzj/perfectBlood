@@ -54,6 +54,7 @@ function loadImging(result){
 	bkLayer.addChild(logo);
 	//加载
 	LLoadManage.load(gameImg,loadProgress,startGame);
+	bkLayer.addChild(new musicBtn(676,20,1,1,result['music'],'Jaudio'));
 }
 //加载函数
 function loadProgress(pre){
@@ -141,7 +142,9 @@ function first(){
 		bkLayer.addChild(firstTwo);
 		LTweenLite.to(firstOne,1.0,{alpha:1.0}).to(firstTwo,1.0,{alpha:1.0,onComplete:second});
 	}});
+	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	setHeartGroup();
+	
 }
 //第二个场景
 function second(){
@@ -153,6 +156,7 @@ function second(){
 	LTweenLite.to(bkLayer,1.5,{alpha:0,delay:1.0});
 	LTweenLite.to(secondBkg,1.5,{alpha:1.0,delay:1.0,onComplete:function(){
 		bkLayer.removeAllChild();
+		backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 		//大中小心
 		var littleHeart01 = getBitmap(imgList['littleHeart01']);
 		littleHeart01.x = 345;
@@ -278,6 +282,7 @@ function third(){
 	var d = new setText(480,935,58,"O","black",true);
 	d.alpha = 0;
 	backLayer.addChild(d);
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	LTweenLite.to(bloodStyle,1.0,{alpha:1.0}).to(a,1.0,{alpha:1.0}).to(b,1.0,{alpha:1.0}).to(c,1.0,{alpha:1.0}).to(d,1.0,{alpha:1.0,onComplete:function(){
 		var aBack = new LSprite();
 		aBack.graphics.drawRect(0,'#000000',[100,125,165,410],false,'#000000');
@@ -307,6 +312,7 @@ function four(){
 	var tipText1 = new setText(0,60,36,"请问献血后","black",false);
 	tipText1.x = rCenterWidth(tipText1);
 	backLayer.addChild(tipText1);
+	
 	var tipText2 = new setText(0,118,36,"您会选择哪一种食物做为营养补充？","black",false);
 	tipText2.x = rCenterWidth(tipText2);
 	backLayer.addChild(tipText2);
@@ -355,6 +361,8 @@ function four(){
 	e.x = 500;
 	e.y = 850+food4.getHeight()+10;
 	backLayer.addChild(e);
+	
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	food1.alpha=0;
 	food2.alpha=0;
 	food3.alpha=0;
@@ -369,16 +377,16 @@ function four(){
 	tipText2.alpha = 0;
 	setHeartGroup();
 	LTweenLite.to(tipText1,1.0,{alpha:1.0}).to(tipText2,1.0,{alpha:1.0,onComplete:function(){
-		LTweenLite.to(food1,1.0,{alpha:1.0});
-		LTweenLite.to(a,1.0,{alpha:1.0,onComplete:function(){
-			LTweenLite.to(food2,1.0,{alpha:1.0});
-			LTweenLite.to(b,1.0,{alpha:1.0,onComplete:function(){
-				LTweenLite.to(food3,1.0,{alpha:1.0});
-				LTweenLite.to(c,1.0,{alpha:1.0,onComplete:function(){
-					LTweenLite.to(food4,1.0,{alpha:1.0});
-					LTweenLite.to(d,1.0,{alpha:1.0,onComplete:function(){
-						LTweenLite.to(food5,1.0,{alpha:1.0});
-						LTweenLite.to(e,1.0,{alpha:1.0,onComplete:function(){
+		LTweenLite.to(food1,0.7,{alpha:1.0});
+		LTweenLite.to(a,0.7,{alpha:1.0,onComplete:function(){
+			LTweenLite.to(food2,0.7,{alpha:1.0});
+			LTweenLite.to(b,0.7,{alpha:1.0,onComplete:function(){
+				LTweenLite.to(food3,0.7,{alpha:1.0});
+				LTweenLite.to(c,0.7,{alpha:1.0,onComplete:function(){
+					LTweenLite.to(food4,0.7,{alpha:1.0});
+					LTweenLite.to(d,0.7,{alpha:1.0,onComplete:function(){
+						LTweenLite.to(food5,0.7,{alpha:1.0});
+						LTweenLite.to(e,0.7,{alpha:1.0,onComplete:function(){
 							var aBack = new LSprite();
 							aBack.graphics.drawRect(0, '#000000', [12, 212, 340, 210], false, '#000000');
 							backLayer.addChild(aBack);
@@ -435,6 +443,7 @@ function five(){
 	backLayer.addChild(bkLayer);
 	var fiveBkg = getBitmap(imgList['fiveBkg']);
 	bkLayer.addChild(fiveBkg);
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	var life = getBitmap(imgList['life']);
 	life.x = rCenterWidth(life);
 	life.y = 48;
@@ -478,7 +487,7 @@ function five(){
 	bkLayer.addChild(st02);
 	var vt05 =new setWrapText(50,990,28,"手术中","black",false,150,true,32,3);
 	bkLayer.addChild(vt05);
-	//
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence021.alpha = 0;
 	sence022.alpha = 0;
 	sence023.alpha = 0;
@@ -586,7 +595,7 @@ function fiveTwo(){
 	bkLayer.addChild(vt06);
 	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st05);
-	
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	
 	sence011.alpha = 0;
 	sence012.alpha = 0;
@@ -728,7 +737,7 @@ function fiveThree(){
 	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,speed);
 	bkLayer.addChild(st04);
 	
-	
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence031.alpha = 0;
 	sence032.alpha = 0;
 	sence033.alpha = 0;
