@@ -6,7 +6,7 @@
 		<meta content="yes" name="apple-mobile-web-app-capable"/>
 	    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
 	    <meta content="telephone=no" name="format-detection"/>
-		<title>答题</title>
+		<title>无偿献血背后不为人知的故事</title>
 		<link rel="stylesheet" href="css/index.css" />
 		<script type="text/javascript" src="js/lufylegend-1.10.1.min.js" ></script>
         <script src="https://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
@@ -39,71 +39,85 @@
 			audioAutoPlay('hit',0);
 			
 		</script>
+        <script type="text/javascript">
+
+        window.link="https://wm.hengdikeji.com/";
+        var fxtitle="无偿献血背后不为人知的故事";
+        var fxdesc="我们爱心的一小部分却是他们生命的全部。";
+        var fxurl="https://wm.hengdikeji.com/perfectBlood/index.html";
+        var fximg="https://wm.hengdikeji.com/perfectBlood/img/fxt.jpg";
+        $(function(){
+            $.ajax({
+                type:'get',
+                url:window.link+'jssdk2',
+                dataType:'JSON',
+                success:function(res,textStatus){
+                    wx.config({
+                        debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+                        appId:''+res.appId+'', // 必填，公众号的唯一标识
+
+                        timestamp: ''+res.timestamp+'', // 必填，生成签名的时间戳
+
+                        nonceStr:''+res.nonceStr+'', // 必填，生成签名的随机串
+
+                        signature:''+res.signature+'',// 必填，签名，见附录1
+
+                        jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+
+                    });
+                    wx.ready(function () {
+                        wx.onMenuShareTimeline({
+                            title: fxtitle,
+                            link: fxurl,
+                            imgUrl: fximg,
+                            success: function (res) {
+
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                                alert(JSON.stringify(res));
+                            }
+                        });
+                        wx.onMenuShareAppMessage({
+                            title: fxtitle,
+                            desc:fxdesc,
+                            link: fxurl,
+                            imgUrl: fximg,
+
+                            success: function (res) {
+
+                            },
+                            cancel: function (res) {
+                            },
+                            fail: function (res) {
+                                alert(JSON.stringify(res));
+                            }
+                        });
+                    })
+                },
+                error:function(XMLHttpRequest, textStatus, errorThrown){
+
+                }
+            });
+
+            $.ajax({
+                url:window.link+'blood/userinfo',
+                dataType:'JSON',
+                success:function(res){
+                    if(res.code==401){
+                        window.location.href=res.url;
+                    }else{
+
+                        window.nickname = res.nickname;
+                    }
+                }
+            });
+        });
+    </script>
 		<script type="text/javascript" src="js/resource.js" ></script>
 		<script type="text/javascript" src="js/bemzjGame.js" ></script>
 		<script type="text/javascript" src="js/main.js" ></script>
-        <script type="text/javascript">
 
-            window.link="https://wm.hengdikeji.com/";
-            var fxtitle="你的一次，他人的一生";
-            var fxdesc="献血小科普，这些你知道吗？";
-            var fxurl="https://wm.hengdikeji.com/perfectBlood/index.html";
-            var fximg="https://wm.hengdikeji.com/perfectBlood/img/fxt.jpg";
-            $(function(){
-                $.ajax({
-                    type:'get',
-                    url:window.link+'jssdk2',
-                    dataType:'JSON',
-                    success:function(res,textStatus){
-                        wx.config({
-                            debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
-                            appId:''+res.appId+'', // 必填，公众号的唯一标识
-
-                            timestamp: ''+res.timestamp+'', // 必填，生成签名的时间戳
-
-                            nonceStr:''+res.nonceStr+'', // 必填，生成签名的随机串
-
-                            signature:''+res.signature+'',// 必填，签名，见附录1
-
-                            jsApiList: ['onMenuShareTimeline','onMenuShareAppMessage'] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
-
-                        });
-                        wx.ready(function () {
-                            wx.onMenuShareTimeline({
-                                title: fxtitle,
-                                link: fxurl,
-                                imgUrl: fximg,
-                                success: function (res) {
-
-                                },
-                                cancel: function (res) {
-                                },
-                                fail: function (res) {
-                                    alert(JSON.stringify(res));
-                                }
-                            });
-                            wx.onMenuShareAppMessage({
-                                title: fxtitle,
-                                desc:fxdesc,
-                                link: fxurl,
-                                imgUrl: fximg,
-
-                                success: function (res) {
-
-                                },
-                                cancel: function (res) {
-                                },
-                                fail: function (res) {
-                                    alert(JSON.stringify(res));
-                                }
-                            });
-                        })
-                    },
-                    error:function(XMLHttpRequest, textStatus, errorThrown){
-
-                    }
-                })
-            });
-        </script>
 	</body>
 </html>

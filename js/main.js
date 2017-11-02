@@ -807,9 +807,11 @@ function last(){
 	logo.y = 310;
 	lastLayer.addChild(logo);
 	//微信获取微信名
-	var wName = new setText(0,560,36,"邱梓佳","black",false);
-	wName.x = rCenterWidth(wName);
-	lastLayer.addChild(wName);
+
+    wName = new setText(0,560,36,window.nickname,"black",false);
+    wName.x = rCenterWidth(wName);
+    lastLayer.addChild(wName);
+
 	//感谢语
 	var n = parseInt(Math.random()*5);
 	var thankWord = new setText(0,660,36,"谢谢您","black",false);
