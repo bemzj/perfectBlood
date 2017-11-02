@@ -37,9 +37,23 @@ var gameImg = [
 	{path:'img/sence021.png',type:'img',name:'sence021'},//场景1
 	{path:'img/sence022.png',type:'img',name:'sence022'},//场景2
 	{path:'img/sence023.png',type:'img',name:'sence023'},//场景3
+	{path:'img/sence031.png',type:'img',name:'sence031'},//场景1
+	{path:'img/sence032.png',type:'img',name:'sence032'},//场景2
+	{path:'img/sence033.png',type:'img',name:'sence033'},//场景3
+	{path:'img/box01.png',type:'img',name:'box01'},//对话框1
+	{path:'img/box02.png',type:'img',name:'box02'},//对话框2
+	{path:'img/box03.png',type:'img',name:'box03'},//对话框3
+	{path:'img/box04.png',type:'img',name:'box04'},//对话框4
+	{path:'img/box05.png',type:'img',name:'box05'},//对话框5
+	{path:'img/box06.png',type:'img',name:'box06'},//对话框6
+	{path:'img/box07.png',type:'img',name:'box07'},//对话框7
+	{path:'img/box08.png',type:'img',name:'box08'},//对话框8
+	{path:'img/box09.png',type:'img',name:'box09'},//对话框9
+	{path:'img/box010.png',type:'img',name:'box010'},//对话框10
+	{path:'img/share.png',type:'img',name:'share'},//分享
 ]
 //全局变量
-var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween;
+var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween,num;
 //上传
 function upHeart(x){
 	base(this,LSprite,[]);

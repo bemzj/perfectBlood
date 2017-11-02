@@ -382,28 +382,28 @@ function four(){
 							var aBack = new LSprite();
 							aBack.graphics.drawRect(0, '#000000', [12, 212, 340, 210], false, '#000000');
 							backLayer.addChild(aBack);
-							aBack.addEventListener(LMouseEvent.MOUSE_DOWN, five);
+							aBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
 							
 							var bBack = new LSprite();
 							bBack.graphics.drawRect(0, '#000000', [455, 196, 290, 226], false, '#000000');
 							backLayer.addChild(bBack);
-							bBack.addEventListener(LMouseEvent.MOUSE_DOWN, five);
+							bBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
 							
 							var cBack = new LSprite();
 							cBack.graphics.drawRect(0, '#000000', [0, 470, 450, 340], false, '#000000');
 							cBack.x = rCenterWidth(cBack);
 							backLayer.addChild(cBack);
-							cBack.addEventListener(LMouseEvent.MOUSE_DOWN, five);
+							cBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
 							
 							var dBack = new LSprite();
 							dBack.graphics.drawRect(0, '#000000', [65, 850, 220, 370], false, '#000000');
 							backLayer.addChild(dBack);
-							dBack.addEventListener(LMouseEvent.MOUSE_DOWN, five);
+							dBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
 							
 							var eBack = new LSprite();
 							eBack.graphics.drawRect(0, '#000000', [430, 915, 260, 310], false, '#000000');
 							backLayer.addChild(eBack);
-							eBack.addEventListener(LMouseEvent.MOUSE_DOWN, five);
+							eBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
 							
 						}});
 					}});
@@ -412,6 +412,20 @@ function four(){
 		}});
 	}});
 	
+}
+function fiveChoice(){
+	num = parseInt(Math.random() * 3);
+	switch(num) {
+		case 0:
+			five();
+			break;
+		case 1:
+			fiveTwo();
+			break;
+		case 2:
+			fiveThree();
+			break;
+	}
 }
 //第五个场景
 function five(){
@@ -434,7 +448,11 @@ function five(){
 	sence021.x = 48;
 	sence021.y = 158;
 	bkLayer.addChild(sence021);
-	var st01 = new setWrapText(455,370,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,155,true,24,5);
+	var box01 = getBitmap(imgList['box09']);
+	box01.x = 400;
+	box01.y = 345;
+	bkLayer.addChild(box01);
+	var st01 = new setWrapText(435,375,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,190,true,28,5);
 	bkLayer.addChild(st01);
 	var vt01 =new setWrapText(690,100,28,"来自香港的何俊患白血病多年","black",false,32,true,32,3);
 	bkLayer.addChild(vt01);
@@ -452,7 +470,11 @@ function five(){
 	sence023.x = 48;
 	sence023.y = 936;
 	bkLayer.addChild(sence023);
-	var st02 = new setWrapText(450,1110,22,"“等待的那五年里，我几乎看到了人生的尽头。但现在，谢谢你，给了我第二次生命！我会继续传播这种正能量。”","black",true,200,true,24,3);
+	var box02 = getBitmap(imgList['box010']);
+	box02.x = 350;
+	box02.y = 1060;
+	bkLayer.addChild(box02);
+	var st02 = new setWrapText(425,1098,22,"“等待的那五年里，我几乎看到了人生的尽头。但现在，谢谢你，给了我第二次生命！我会继续传播这种正能量。”","black",true,240,true,28,3);
 	bkLayer.addChild(st02);
 	var vt05 =new setWrapText(50,990,28,"手术中","black",false,150,true,32,3);
 	bkLayer.addChild(vt05);
@@ -467,20 +489,295 @@ function five(){
 	vt03.alpha = 0;
 	vt04.alpha = 0;
 	vt05.alpha = 0;
+	box01.alpha = 0 ;
+	box02.alpha = 0 ;
 	setHeartGroup();
-	LTweenLite.to(sence021,1.0,{alpha:1.0}).to(vt01,1.0,{alpha:1.0}).to(vt02,1.0,{alpha:1.0,onComplete:function(){
+	LTweenLite.to(sence021,1.0,{alpha:1.0}).to(vt01,1.0,{alpha:1.0}).to(vt02,1.0,{alpha:1.0}).to(box01,1.0,{alpha:1.0,onComplete:function(){
 		st01.alpha = 1;
 		st01.play();
 		document.getElementById('hit').play();
 		st01.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
 			document.getElementById('hit').pause();
-			LTweenLite.to(sence022,1.0,{delay:1.0,alpha:1.0}).to(vt03,1.0,{alpha:1.0}).to(vt04,1.0,{alpha:1.0}).to(sence023,1.0,{delay:1.0,alpha:1.0}).to(vt05,1.0,{alpha:1.0,onComplete:function(){
+			LTweenLite.to(sence022,1.0,{delay:1.0,alpha:1.0}).to(vt03,1.0,{alpha:1.0}).to(vt04,1.0,{alpha:1.0}).to(sence023,1.0,{delay:1.0,alpha:1.0}).to(vt05,1.0,{alpha:1.0}).to(box02,1.0,{alpha:1.0,onComplete:function(){
 				st02.alpha = 1;
 				st02.play();
 				document.getElementById('hit').play();
 				st02.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
 					document.getElementById('hit').pause();
 					setTimeout(last,5000);
+				});
+			}});
+		});
+	}});
+}
+//第五个场景2
+function fiveTwo(){
+	backLayer.removeAllChild();
+	clearInterval(heartTween);
+	bkLayer = new LSprite();
+	backLayer.addChild(bkLayer);
+	var fiveBkg = getBitmap(imgList['fiveBkg']);
+	bkLayer.addChild(fiveBkg);
+	var life = getBitmap(imgList['life']);
+	life.x = rCenterWidth(life);
+	life.y = 48;
+	life.alpha = 0;
+	bkLayer.addChild(life);
+	LTweenLite.to(life,1.0,{alpha:1.0})
+	var life = getBitmap(imgList['life']);
+	life.x = rCenterWidth(life);
+	
+	var sence011 = getBitmap(imgList['sence011']);
+	sence011.x = 48;
+	sence011.y = 158;
+	bkLayer.addChild(sence011);
+	//box
+	var box01 = getBitmap(imgList['box01']);
+	box01.x = 420;
+	box01.y = 155;
+	bkLayer.addChild(box01);
+	
+	
+	var st01 = new setWrapText(465,190,22,"“是急性白血病，生命垂危，急需新鲜血小板，但血库不足。”","black",true,155,true,28,5);
+	bkLayer.addChild(st01);
+	var vt01 =new setWrapText(705,85,28,"今年8月，育有两个孩子的小芳","black",false,28,true,32,3);
+	vt01.childList["0"].textAlign = 'center';
+	bkLayer.addChild(vt01);
+	var vt02 =new setWrapText(655,118,28,"发现身体不适，到医院检查","black",false,32,true,32,3);
+	bkLayer.addChild(vt02);
+	var sence012 = getBitmap(imgList['sence012']);
+	sence012.x = 48;
+	sence012.y = 544;
+	bkLayer.addChild(sence012);
+	var box02 = getBitmap(imgList['box02']);
+	box02.x = 36;
+	box02.y = 175;
+	bkLayer.addChild(box02);
+	var st02 = new setWrapText(80,220,22,"“怎么办，我还有两个孩子需要照顾啊！”","black",true,140,true,28,3);
+	bkLayer.addChild(st02);
+	var vt03 =new setWrapText(690,625,28,"亲友们通过朋友圈","black",false,32,true,32,3);
+	bkLayer.addChild(vt03);
+	var vt04 =new setWrapText(655,607,28,"不断向社会各界求助","black",false,32,true,32,3);
+	bkLayer.addChild(vt04);
+	var box03 = getBitmap(imgList['box03']);
+	box03.x = 100;
+	box03.y = 505;
+	bkLayer.addChild(box03);
+	var st03 = new setWrapText(150,530,22,"“我们都是看到朋友圈来给小芳献血的，她一定要挺过去。”","black",true,160,true,26,3);
+	bkLayer.addChild(st03);
+	var box04 = getBitmap(imgList['box04']);
+	box04.x = 465;
+	box04.y = 525;
+	bkLayer.addChild(box04);
+	var st04 = new setWrapText(480,574,22,"“谢谢您的爱心。”","black",true,200,true,26,3);
+	bkLayer.addChild(st04);
+	
+	var sence013 = getBitmap(imgList['sence013']);
+	sence013.x = 48;
+	sence013.y = 936;
+	bkLayer.addChild(sence013);
+	var box05 = getBitmap(imgList['box03']);
+	box05.x = 20;
+	box05.y = 900;
+	bkLayer.addChild(box05);
+	var vt05 =new setWrapText(690,1008,28,"在大家的帮助下","black",false,32,true,32,3);
+	bkLayer.addChild(vt05);
+	var vt06 =new setWrapText(655,960,28,"小芳的病情得到了缓解","black",false,32,true,32,3);
+	bkLayer.addChild(vt06);
+	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,3);
+	bkLayer.addChild(st05);
+	
+	
+	sence011.alpha = 0;
+	sence012.alpha = 0;
+	sence013.alpha = 0;
+	st01.alpha = 0;
+	st02.alpha = 0;
+	st03.alpha = 0;
+	st04.alpha = 0;
+	st05.alpha = 0;
+	box01.alpha = 0;
+	box02.alpha = 0;
+	box03.alpha = 0;
+	box04.alpha = 0;
+	box05.alpha = 0;
+	vt01.alpha = 0;
+	vt02.alpha = 0;
+	vt03.alpha = 0;
+	vt04.alpha = 0;
+	vt05.alpha = 0;
+	vt06.alpha = 0;
+	setHeartGroup();
+	LTweenLite.to(sence011,1.0,{alpha:1.0}).to(vt01,1.0,{alpha:1.0}).to(vt02,1.0,{alpha:1.0}).to(box01,1.0,{alpha:1.0,onComplete:function(){
+		st01.alpha = 1;
+		st01.play();
+		document.getElementById('hit').play();
+		st01.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+			document.getElementById('hit').pause();
+			LTweenLite.to(box02,1.0,{alpha:1.0,onComplete:function(){
+				st02.alpha = 1;
+				st02.play();
+				document.getElementById('hit').play();
+				st02.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+					document.getElementById('hit').pause();
+					LTweenLite.to(sence012,1.0,{alpha:1.0}).to(vt03,1.0,{alpha:1.0}).to(vt04,1.0,{alpha:1.0}).to(box03,1.0,{alpha:1.0,onComplete:function(){
+						st03.alpha = 1;
+						st03.play();
+						document.getElementById('hit').play();
+						st03.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+							document.getElementById('hit').pause();
+							LTweenLite.to(box04,1.0,{alpha:1.0,onComplete:function(){
+								st04.alpha = 1;
+								st04.play();
+								document.getElementById('hit').play();
+								st04.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+									document.getElementById('hit').pause();
+									LTweenLite.to(sence013,1.0,{alpha:1.0}).to(vt05,1.0,{alpha:1.0}).to(vt06,1.0,{alpha:1.0}).to(box05,1.0,{alpha:1.0,onComplete:function(){
+										st05.alpha = 1;
+										st05.play();
+										document.getElementById('hit').play();
+										st05.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+											document.getElementById('hit').pause();
+											setTimeout(last,5000);
+										});
+									}});
+								});
+							}});
+						});
+					}});
+				});
+			}});
+		});
+	}});
+}
+//第五个场景3
+function fiveThree(){
+	backLayer.removeAllChild();
+	clearInterval(heartTween);
+	bkLayer = new LSprite();
+	backLayer.addChild(bkLayer);
+	var fiveBkg = getBitmap(imgList['fiveBkg']);
+	bkLayer.addChild(fiveBkg);
+	var life = getBitmap(imgList['life']);
+	life.x = rCenterWidth(life);
+	life.y = 48;
+	life.alpha = 0;
+	bkLayer.addChild(life);
+	LTweenLite.to(life,1.0,{alpha:1.0})
+	var life = getBitmap(imgList['life']);
+	life.x = rCenterWidth(life);
+	
+	var sence031 = getBitmap(imgList['sence031']);
+	sence031.x = 48;
+	sence031.y = 158;
+	bkLayer.addChild(sence031);
+	//box
+	var box01 = getBitmap(imgList['box05']);
+	box01.x = 400;
+	box01.y = 220;
+	bkLayer.addChild(box01);
+	var st01 = new setWrapText(450,290,22,"“你父亲出了车祸，情况紧急必须马上手术，需要5000--6000毫升的O型血。但全市血库有限。”","black",true,250,true,28,5);
+	bkLayer.addChild(st01);
+	
+	var vt01 =new setWrapText(58,130,28,"几年前，海南完美无偿献血","black",false,750,false,32,3);
+	bkLayer.addChild(vt01);
+	var vt02 =new setWrapText(30,170,28,"志愿者小成的父亲忽然出了车祸","black",false,750,false,32,3);
+	bkLayer.addChild(vt02);
+	
+	var sence032 = getBitmap(imgList['sence032']);
+	sence032.x = 48;
+	sence032.y = 580;
+	bkLayer.addChild(sence032);
+	var box02 = getBitmap(imgList['box06']);
+	box02.x = 10;
+	box02.y = 550;
+	bkLayer.addChild(box02);
+	
+	
+	var st02 = new setWrapText(50,585,22,"“帮帮我，我爸出车祸进医院了，急需O型血。”","black",true,160,true,26,3);
+	bkLayer.addChild(st02);
+	var box03 = getBitmap(imgList['box07']);
+	box03.x = 505;
+	box03.y = 525;
+	bkLayer.addChild(box03);
+	var vt03 =new setWrapText(0,540,28,"向亲友求助无果","black",false,750,false,32,3);
+	vt03.x = rCenterWidth(vt03);
+	bkLayer.addChild(vt03);
+	var vt04 =new setWrapText(0,580,28,"的小成拨通了完美","black",false,750,false,32,3);
+	vt04.x = rCenterWidth(vt04);
+	bkLayer.addChild(vt04);
+	var vt05 =new setWrapText(0,620,28,"公司的电话","black",false,750,false,32,3);
+	vt05.x = rCenterWidth(vt05);
+	bkLayer.addChild(vt05);
+	
+	var st03 = new setWrapText(545,575,22,"“我们马上组织全省各地同血型的志愿者到医院献血。”","black",true,180,true,26,3);
+	bkLayer.addChild(st03);
+	
+	var sence033 = getBitmap(imgList['sence033']);
+	sence033.x = 48;
+	sence033.y = 940;
+	bkLayer.addChild(sence033);
+	var box04 = getBitmap(imgList['box08']);
+	box04.x = 30;
+	box04.y = 1080;
+	bkLayer.addChild(box04);
+	var vt06 =new setWrapText(30,930,28,"父亲很快脱离了危险，小成从没想过","black",false,750,false,32,3);
+	bkLayer.addChild(vt06);
+	var vt07 =new setWrapText(58,965,28,"自己会变成无偿献血的受益者。","black",false,750,false,32,3);
+	bkLayer.addChild(vt07);
+	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,3);
+	bkLayer.addChild(st04);
+	
+	
+	sence031.alpha = 0;
+	sence032.alpha = 0;
+	sence033.alpha = 0;
+	st01.alpha = 0;
+	st02.alpha = 0;
+	st03.alpha = 0;
+	st04.alpha = 0;
+	box01.alpha = 0;
+	box02.alpha = 0;
+	box03.alpha = 0;
+	box04.alpha = 0;
+	vt01.alpha = 0;
+	vt02.alpha = 0;
+	vt03.alpha = 0;
+	vt04.alpha = 0;
+	vt05.alpha = 0;
+	vt06.alpha = 0;
+	vt07.alpha = 0;
+	setHeartGroup();
+	LTweenLite.to(sence031,1.0,{alpha:1.0}).to(vt01,1.0,{alpha:1.0}).to(vt02,1.0,{alpha:1.0}).to(box01,1.0,{alpha:1.0,onComplete:function(){
+		st01.alpha = 1;
+		st01.play();
+		document.getElementById('hit').play();
+		st01.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+			document.getElementById('hit').pause();
+			LTweenLite.to(sence032,1.0,{alpha:1.0}).to(vt03,1.0,{alpha:1.0}).to(vt04,1.0,{alpha:1.0}).to(vt05,1.0,{alpha:1.0}).to(box02,1.0,{alpha:1.0,onComplete:function(){
+				st02.alpha = 1;
+				st02.play();
+				document.getElementById('hit').play();
+				st02.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+					document.getElementById('hit').pause();
+					LTweenLite.to(box03,1.0,{alpha:1.0,onComplete:function(){
+						st03.alpha = 1;
+						st03.play();
+						document.getElementById('hit').play();
+						st03.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+							document.getElementById('hit').pause();
+							LTweenLite.to(sence033,1.0,{alpha:1.0}).to(vt06,1.0,{alpha:1.0}).to(vt07,1.0,{alpha:1.0}).to(box04,1.0,{alpha:1.0,onComplete:function(){
+								st04.alpha = 1;
+								st04.play();
+								document.getElementById('hit').play();
+								st04.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+									document.getElementById('hit').pause();
+									setTimeout(last,5000);
+								});
+							}});
+						});
+					}});
+
 				});
 			}});
 		});
@@ -527,15 +824,55 @@ function last(){
 	//寻找ta
 	var searchTA = new LSprite();
 	searchTA.graphics.drawRect(0, "#000000", [0, 0, 300, 60], true, 'rgb(192,0,0)');
-	searchTA.y = 1020;
+	searchTA.y = 1070;
 	searchTA.x = rCenterWidth(searchTA);
 	lastLayer.addChild(searchTA);
 	bigAndSmall(searchTA,2,2,1.0,0.05,0,true);
+	searchTA.addEventListener(LMouseEvent.MOUSE_DOWN,share);
 	//寻找他文案
 	var wantTa = new setText(210, 1210, 32, "让爱继续传递", "white", false);
-	wantTa.y = 1034;
+	wantTa.y = 1084;
 	wantTa.x = rCenterWidth(wantTa);
 	lastLayer.addChild(wantTa);
 	bigAndSmall(wantTa,2,2,1.0,0.05,0,true);
+	//重温
+	var returnBack = new LSprite();
+	returnBack.graphics.drawRect(0, "#000000", [0, 0, 300, 60], true, 'rgb(192,0,0)');
+	returnBack.y = 970;
+	returnBack.x = rCenterWidth(returnBack);
+	lastLayer.addChild(returnBack);
+	bigAndSmall(returnBack,2,2,1.0,0.05,0,true);
+	returnBack.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+		console.log(num);
+		switch(num) {
+			case 0:
+				five();
+				break;
+			case 1:
+				fiveTwo();
+				break;
+			case 2:
+				fiveThree();
+				break;
+		}
+	})
+	//寻找他文案
+	var rBack = new setText(210, 1210, 32, "重温", "white", false);
+	rBack.y = 984;
+	rBack.x = rCenterWidth(rBack);
+	lastLayer.addChild(rBack);
+	bigAndSmall(rBack,2,2,1.0,0.05,0,true);
 	setHeartGroup();
+}
+function share(){
+	var shareLayer = new LSprite();
+	backLayer.addChild(shareLayer);
+	shareLayer.graphics.drawRect(0, "#000000", [0, 0, 750,1336], true, 'rgba(0,0,0,0.75)');
+	backLayer.addChild(shareLayer);
+	var share = getBitmap(imgList['share']);
+	share.x = 0;
+	shareLayer.addChild(share);
+	shareLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
+		shareLayer.remove();
+	})
 }
