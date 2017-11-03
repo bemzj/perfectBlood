@@ -135,10 +135,10 @@ function first(){
 	bkLayer.addChild(person);
 	person.alpha = 0;
 	LTweenLite.to(person,1.2,{alpha:1.0,onComplete:function(){
-		var firstOne = new setText(210,1210,36,"你的一次,","black",false);
+		var firstOne = new setText(210,1180,36,"你的一次,","black",false);
 		firstOne.alpha = 0;
 		bkLayer.addChild(firstOne);
-		var firstTwo = new setText(390,1210,36,"他的一生","black",false);
+		var firstTwo = new setText(390,1180,36,"他的一生","black",false);
 		firstTwo.alpha = 0;
 		bkLayer.addChild(firstTwo);
 		LTweenLite.to(firstOne,1.0,{alpha:1.0}).to(firstTwo,1.0,{alpha:1.0,onComplete:second});
@@ -284,7 +284,7 @@ function third(){
 	d.alpha = 0;
 	backLayer.addChild(d);
 	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
-	LTweenLite.to(bloodStyle,1.0,{alpha:1.0}).to(a,1.0,{alpha:1.0}).to(b,1.0,{alpha:1.0}).to(c,1.0,{alpha:1.0}).to(d,1.0,{alpha:1.0,onComplete:function(){
+	LTweenLite.to(bloodStyle,1.0,{alpha:1.0}).to(a,0.7,{alpha:1.0}).to(b,0.7,{alpha:1.0}).to(c,0.7,{alpha:1.0}).to(d,1.0,{alpha:0.7,onComplete:function(){
 		var aBack = new LSprite();
 		aBack.graphics.drawRect(0,'#000000',[100,125,165,410],false,'#000000');
 		backLayer.addChild(aBack);
@@ -818,9 +818,10 @@ function last(){
 	lastLayer.addChild(logo);
 	//微信获取微信名
 
-    wName = new setText(0,560,36,window.nickname,"black",false);
+    wName = new setText(0,560,36,window.nickname,"black",true);
     wName.x = rCenterWidth(wName);
     lastLayer.addChild(wName);
+    bigAndSmall(wName,2,2,1.0,0.05,0,true);
 
 	//感谢语
 	var n = parseInt(Math.random()*5);

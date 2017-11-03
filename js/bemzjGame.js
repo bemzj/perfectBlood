@@ -40,6 +40,7 @@ function bigAndSmall(tween,x,y,time,scales,delayTime,loops){
 	var bigAfterY = tween.y-tween.getHeight()*scales/y;
 	return LTweenLite.to(tween,time/2,{loop:loops,delay:delayTime,x:bigAfterX,y:bigAfterY,scaleX:(1+scales),scaleY:(1+scales)}).to(tween,time/2,{x:bigBeforeX,y:bigBeforeY,scaleX:1,scaleY:1});
 }
+var opening = true;
 //音乐按钮类
 function musicBtn(x,y,sx,sy,name,musicId){
 	/*
@@ -54,28 +55,45 @@ function musicBtn(x,y,sx,sy,name,musicId){
 	var self = this;
 	self.x=x;
 	self.y=y;
-	self.open=true;
+	self.open=opening;
+	self.n = 1;
 	var musicImg = new LBitmap(new LBitmapData(name));
 	musicImg.scaleX = sx;
 	musicImg.scaleY = sy;
 	//音乐按钮旋转
-	self.musicplay = LTweenLite.to(musicImg,1.0,{rotate:360,loop:true,onComplete:function(){
-		musicImg.rotate = 0;
-	}})
+	if(self.open==true)
+	{
+		self.musicplay = LTweenLite.to(musicImg,1.0,{rotate:360,loop:true,onComplete:function(){
+			musicImg.rotate = 0;
+		}});
+		self.n = 0;
+	}
+	
 	self.addChild(musicImg);
 	self.graphics.drawRect(0,'#000000',[0,0,musicImg.getWidth(),musicImg.getHeight()],false,'#ff0000');
 	self.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
-		if(self.open==true)
+		if(self.n==1&&opening==false)
 		{
-			document.getElementById(musicId).pause();
-			self.open = false;
-			self.musicplay.pause();
-			
-		}else{
+			self.musicplay = LTweenLite.to(musicImg,1.0,{rotate:360,loop:true,onComplete:function(){
+				musicImg.rotate = 0;
+			}});
 			document.getElementById(musicId).play();
-			self.open = true;
-			self.musicplay.resume();
+		}else{
+			if(self.open==true)
+			{
+				document.getElementById(musicId).pause();
+				self.open = false;
+				self.musicplay.pause();
+				opening=false;
+				
+			}else{
+				document.getElementById(musicId).play();
+				self.open = true;
+				self.musicplay.resume();
+				opening=true;
+			}
 		}
+		self.n = 0;	
 	});
 }
 //闪闪发光
