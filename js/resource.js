@@ -53,9 +53,9 @@ var gameImg = [
 	{path:'img/box08.png',type:'img',name:'box08'},//对话框8
 	{path:'img/box09.png',type:'img',name:'box09'},//对话框9
 	{path:'img/box010.png',type:'img',name:'box010'},//对话框10
-	{path:'img/share.png',type:'img',name:'share'},//分享
-	{path:'img/shareTitle.png',type:'img',name:'shareTitle'},//分享语
-	{path:'img/transition.jpg',type:'img',name:'transition'},//过度页面
+	{path:'img/share.png?v=2',type:'img',name:'share'},//分享
+	{path:'img/shareTitle.png?v=2',type:'img',name:'shareTitle'},//分享语
+	{path:'img/transition.jpg?v=2',type:'img',name:'transition'},//过度页面
 ]
 //全局变量
 var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween,num;
