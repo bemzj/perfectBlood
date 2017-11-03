@@ -10,6 +10,7 @@ var loadImg = [
 ]
 //加载的图片的资源
 var gameImg = [
+	{path:'img/bheart.png',type:'img',name:'bheart'},//心
 	{path:'img/music.png',type:'img',name:'music'},//音乐
 	{path:'img/logo.png',type:'img',name:'logo'},//完美logo
 	{path:'img/hand.png',type:'img',name:'hand'},//手
@@ -54,6 +55,7 @@ var gameImg = [
 	{path:'img/box010.png',type:'img',name:'box010'},//对话框10
 	{path:'img/share.png',type:'img',name:'share'},//分享
 	{path:'img/shareTitle.png',type:'img',name:'shareTitle'},//分享语
+	{path:'img/transition.jpg',type:'img',name:'transition'},//过度页面
 ]
 //全局变量
 var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween,num;

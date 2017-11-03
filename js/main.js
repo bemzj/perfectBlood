@@ -114,6 +114,7 @@ function startGame(result){
 			});
 		}});
 	}});
+
 }
 //第一个场景
 function first(){
@@ -390,28 +391,28 @@ function four(){
 							var aBack = new LSprite();
 							aBack.graphics.drawRect(0, '#000000', [12, 212, 340, 210], false, '#000000');
 							backLayer.addChild(aBack);
-							aBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
+							aBack.addEventListener(LMouseEvent.MOUSE_DOWN, transition);
 							
 							var bBack = new LSprite();
 							bBack.graphics.drawRect(0, '#000000', [455, 196, 290, 226], false, '#000000');
 							backLayer.addChild(bBack);
-							bBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
+							bBack.addEventListener(LMouseEvent.MOUSE_DOWN, transition);
 							
 							var cBack = new LSprite();
 							cBack.graphics.drawRect(0, '#000000', [0, 470, 450, 340], false, '#000000');
 							cBack.x = rCenterWidth(cBack);
 							backLayer.addChild(cBack);
-							cBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
+							cBack.addEventListener(LMouseEvent.MOUSE_DOWN, transition);
 							
 							var dBack = new LSprite();
 							dBack.graphics.drawRect(0, '#000000', [65, 850, 220, 370], false, '#000000');
 							backLayer.addChild(dBack);
-							dBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
+							dBack.addEventListener(LMouseEvent.MOUSE_DOWN, transition);
 							
 							var eBack = new LSprite();
 							eBack.graphics.drawRect(0, '#000000', [430, 915, 260, 310], false, '#000000');
 							backLayer.addChild(eBack);
-							eBack.addEventListener(LMouseEvent.MOUSE_DOWN, fiveChoice);
+							eBack.addEventListener(LMouseEvent.MOUSE_DOWN, transition);
 							
 						}});
 					}});
@@ -882,18 +883,44 @@ function share(){
 	shareLayer.graphics.drawRect(0, "#000000", [0, 0, 750,1336], true, 'rgba(0,0,0,0.75)');
 	backLayer.addChild(shareLayer);
 	var share = getBitmap(imgList['share']);
-	share.x = 400;//400
-	share.y = 20;//20
 	shareLayer.addChild(share);
-	LTweenLite.to(share,0.75,{x:380,y:40,loop:true}).to(share,0.75,{x:400,y:20});
 	
 	var shareTitle = getBitmap(imgList['shareTitle']);
 	shareTitle.x = rCenterWidth(shareTitle);//400
-	shareTitle.y = 500;//20
+	shareTitle.y = 160;//20
 	shareLayer.addChild(shareTitle);
 	bigAndSmall(shareTitle,2,2,1.5,0.1,0,true);
 	
 	shareLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
 		shareLayer.remove();
 	})
+}
+function transition (){
+	backLayer.removeAllChild();
+	var transitions = getBitmap(imgList['transition']);
+	backLayer.addChild(transitions);
+	var bheart = getBitmap(imgList['bheart']);
+	bheart.x = 438;
+	bheart.y = 846;
+	backLayer.addChild(bheart);
+	bigAndSmall(bheart,2,2,1.0,0.05,0,true);
+	var vt01 =new setWrapText(58,130,36,"你准备好","black",false,750,false,32,5);
+	vt01.y = 330;
+	vt01.x = 150;
+	backLayer.addChild(vt01);
+	var vt02 =new setWrapText(58,130,36,"知道TA的故事了吗?","black",false,750,false,32,5);
+	vt02.y = 400;
+	vt02.x = 70;
+	vt02.alpha = 0;
+	backLayer.addChild(vt02);
+	vt01.play();
+	vt01.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+		vt02.alpha = 1;
+		vt02.play();
+		vt02.childList["0"].addEventListener(LTextEvent.WIND_COMPLETE,function(){
+			setTimeout(fiveChoice,2000);
+		});
+	});
+	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
+	setHeartGroup();
 }
