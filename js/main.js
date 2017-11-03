@@ -487,7 +487,7 @@ function five(){
 	bkLayer.addChild(st02);
 	var vt05 =new setWrapText(50,990,28,"手术中","black",false,150,true,32,3);
 	bkLayer.addChild(vt05);
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
+	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence021.alpha = 0;
 	sence022.alpha = 0;
 	sence023.alpha = 0;
@@ -595,7 +595,7 @@ function fiveTwo(){
 	bkLayer.addChild(vt06);
 	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st05);
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
+	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	
 	sence011.alpha = 0;
 	sence012.alpha = 0;
@@ -737,7 +737,7 @@ function fiveThree(){
 	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,speed);
 	bkLayer.addChild(st04);
 	
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
+	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence031.alpha = 0;
 	sence032.alpha = 0;
 	sence033.alpha = 0;
@@ -873,6 +873,7 @@ function last(){
 	rBack.x = rCenterWidth(rBack);
 	lastLayer.addChild(rBack);
 	bigAndSmall(rBack,2,2,1.0,0.05,0,true);
+	lastLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	setHeartGroup();
 }
 function share(){
