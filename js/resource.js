@@ -10,7 +10,7 @@ var loadImg = [
 ]
 //加载的图片的资源
 var gameImg = [
-	{path:'img/lifes.png',type:'img',name:'lifes'},//ta
+	{path:'img/lifes.png?V=2',type:'img',name:'lifes'},//ta
 	{path:'img/bheart.png',type:'img',name:'bheart'},//心
 	{path:'img/music.png',type:'img',name:'music'},//音乐
 	{path:'img/logo.png?v=1',type:'img',name:'logo'},//完美logo
@@ -57,7 +57,7 @@ var gameImg = [
 	{path:'img/share.png?v=2',type:'img',name:'share'},//分享
 	{path:'img/shareTitle.png?v=2',type:'img',name:'shareTitle'},//分享语
 	{path:'img/transition.jpg?v=2',type:'img',name:'transition'},//过度页面
-	{path:'img/lastBkg.jpg',type:'img',name:'lastBkg'},//背景
+	{path:'img/lastBkg.jpg?V=2',type:'img',name:'lastBkg'},//背景
 	{path:'img/c1.png',type:'img',name:'c1'},//c1
 	{path:'img/c2.png',type:'img',name:'c2'},//c2
 	{path:'img/c3.png',type:'img',name:'c3'},//c3
