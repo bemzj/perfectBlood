@@ -807,7 +807,7 @@ function last(){
 	LTweenLite.to(c4,1.0,{rotate:-20,loop:true}).to(c4,1.0,{rotate:0});
 	//心
 	var down = fiveBkg = getBitmap(imgList['down']);
-	down.x = 350;
+	down.x = 295;
 	down.y = 381;
 	lastLayer.addChild(down);
 	bigAndSmall(down,2,2,1.5,0.2,0,true);
