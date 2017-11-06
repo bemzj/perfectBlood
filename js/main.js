@@ -6,6 +6,8 @@ function main(){
     LGlobal.screen(LStage.FULL_SCREEN);//设置全面适应
     backLayer = new LSprite();//创建背景层
     addChild(backLayer);//添加背景层到游戏环境中
+    musicLayer = new LSprite();//创建背景层
+    addChild(musicLayer);//添加背景层到游戏环境中
     LLoadManage.load(loadImg,'',loadImging);
 }
 //预加载页面
@@ -54,7 +56,7 @@ function loadImging(result){
 	bkLayer.addChild(logo);
 	//加载
 	LLoadManage.load(gameImg,loadProgress,startGame);
-	bkLayer.addChild(new musicBtn(676,20,1,1,result['music'],'Jaudio'));
+	musicLayer.addChild(new musicBtn(676,20,1,1,result['music'],'Jaudio'));
 }
 //加载函数
 function loadProgress(pre){
@@ -135,15 +137,15 @@ function first(){
 	bkLayer.addChild(person);
 	person.alpha = 0;
 	LTweenLite.to(person,1.2,{alpha:1.0,onComplete:function(){
-		var firstOne = new setText(210,1180,36,"你的一次,","black",false);
-		firstOne.alpha = 0;
-		bkLayer.addChild(firstOne);
-		var firstTwo = new setText(390,1180,36,"他的一生","black",false);
-		firstTwo.alpha = 0;
-		bkLayer.addChild(firstTwo);
-		LTweenLite.to(firstOne,1.0,{alpha:1.0}).to(firstTwo,1.0,{alpha:1.0,onComplete:second});
+		var lifes = getBitmap(imgList['lifes']);
+		lifes.scaleX = 0.6;
+		lifes.scaleY = 0.6;
+		lifes.x = rCenterWidth(lifes);
+		lifes.y = 100;
+		bkLayer.addChild(lifes);
+		lifes.alpha = 0;
+		LTweenLite.to(lifes,1.0,{alpha:1.0,onComplete:second});
 	}});
-	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	setHeartGroup();
 	
 }
@@ -154,10 +156,9 @@ function second(){
 	secondBkg.alpha = 0;
 	clearInterval(heartTween);
 	//过渡第二个场景
-	LTweenLite.to(bkLayer,1.5,{alpha:0,delay:1.0});
-	LTweenLite.to(secondBkg,1.5,{alpha:1.0,delay:1.0,onComplete:function(){
+	LTweenLite.to(bkLayer,1.5,{alpha:0,delay:2.0});
+	LTweenLite.to(secondBkg,1.5,{alpha:1.0,delay:2.0,onComplete:function(){
 		bkLayer.removeAllChild();
-		backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 		//大中小心
 		var littleHeart01 = getBitmap(imgList['littleHeart01']);
 		littleHeart01.x = 345;
@@ -283,7 +284,6 @@ function third(){
 	var d = new setText(480,935,58,"O","black",true);
 	d.alpha = 0;
 	backLayer.addChild(d);
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	LTweenLite.to(bloodStyle,1.0,{alpha:1.0}).to(a,0.7,{alpha:1.0}).to(b,0.7,{alpha:1.0}).to(c,0.7,{alpha:1.0}).to(d,1.0,{alpha:0.7,onComplete:function(){
 		var aBack = new LSprite();
 		aBack.graphics.drawRect(0,'#000000',[100,125,165,410],false,'#000000');
@@ -362,8 +362,6 @@ function four(){
 	e.x = 500;
 	e.y = 850+food4.getHeight()+10;
 	backLayer.addChild(e);
-	
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	food1.alpha=0;
 	food2.alpha=0;
 	food3.alpha=0;
@@ -444,25 +442,16 @@ function five(){
 	backLayer.addChild(bkLayer);
 	var fiveBkg = getBitmap(imgList['fiveBkg']);
 	bkLayer.addChild(fiveBkg);
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
-	life.y = 48;
-	life.alpha = 0;
-	bkLayer.addChild(life);
-	LTweenLite.to(life,1.0,{alpha:1.0})
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
 	var speed = 3;
 	var sence021 = getBitmap(imgList['sence021']);
 	sence021.x = 48;
-	sence021.y = 158;
+	sence021.y = 108;
 	bkLayer.addChild(sence021);
 	var box01 = getBitmap(imgList['box09']);
 	box01.x = 400;
-	box01.y = 345;
+	box01.y = 295;
 	bkLayer.addChild(box01);
-	var st01 = new setWrapText(435,375,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,190,true,28,speed);
+	var st01 = new setWrapText(435,325,22,"“有志愿者答应为你捐献造血干细胞了，还是罕见的少数民族配对成功。”","black",true,190,true,28,speed);
 	bkLayer.addChild(st01);
 	var vt01 =new setWrapText(690,100,28,"来自香港的何俊患白血病多年","black",false,32,true,32,3);
 	bkLayer.addChild(vt01);
@@ -470,11 +459,11 @@ function five(){
 	bkLayer.addChild(vt02);
 	var sence022 = getBitmap(imgList['sence022']);
 	sence022.x = 48;
-	sence022.y = 544;
+	sence022.y = 534;
 	bkLayer.addChild(sence022);
-	var vt03 =new setWrapText(690,607,28,"配型成功前","black",false,32,true,32,3);
+	var vt03 =new setWrapText(690,597,28,"配型成功前","black",false,32,true,32,3);
 	bkLayer.addChild(vt03);
-	var vt04 =new setWrapText(655,607,28,"他只能靠药物维持生命","black",false,32,true,32,3);
+	var vt04 =new setWrapText(655,597,28,"他只能靠药物维持生命","black",false,32,true,32,3);
 	bkLayer.addChild(vt04);
 	var sence023 = getBitmap(imgList['sence023']);
 	sence023.x = 48;
@@ -488,7 +477,6 @@ function five(){
 	bkLayer.addChild(st02);
 	var vt05 =new setWrapText(50,990,28,"手术中","black",false,150,true,32,3);
 	bkLayer.addChild(vt05);
-	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence021.alpha = 0;
 	sence022.alpha = 0;
 	sence023.alpha = 0;
@@ -530,25 +518,19 @@ function fiveTwo(){
 	bkLayer.addChild(fiveBkg);
 	var life = getBitmap(imgList['life']);
 	life.x = rCenterWidth(life);
-	life.y = 48;
-	life.alpha = 0;
-	bkLayer.addChild(life);
-	LTweenLite.to(life,1.0,{alpha:1.0})
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
 	
 	var sence011 = getBitmap(imgList['sence011']);
 	sence011.x = 48;
-	sence011.y = 158;
+	sence011.y = 98;
 	bkLayer.addChild(sence011);
 	//box
 	var box01 = getBitmap(imgList['box01']);
 	box01.x = 430;
-	box01.y = 270;
+	box01.y = 210;
 	bkLayer.addChild(box01);
 	var speed = 3;
 	
-	var st01 = new setWrapText(475,305,22,"“是急性白血病，生命垂危，急需新鲜血小板，但血库不足。”","black",true,155,true,28,speed);
+	var st01 = new setWrapText(475,245,22,"“是急性白血病，生命垂危，急需新鲜血小板，但血库不足。”","black",true,155,true,28,speed);
 	bkLayer.addChild(st01);
 	var vt01 =new setWrapText(705,85,28,"今年8月，育有两个孩子的小芳","black",false,28,true,32,3);
 	vt01.childList["0"].textAlign = 'center';
@@ -557,13 +539,13 @@ function fiveTwo(){
 	bkLayer.addChild(vt02);
 	var sence012 = getBitmap(imgList['sence012']);
 	sence012.x = 48;
-	sence012.y = 544;
+	sence012.y = 524;
 	bkLayer.addChild(sence012);
 	var box02 = getBitmap(imgList['box02']);
 	box02.x = 36;
-	box02.y = 175;
+	box02.y = 135;
 	bkLayer.addChild(box02);
-	var st02 = new setWrapText(80,220,22,"“怎么办，我还有两个孩子需要照顾啊！”","black",true,140,true,28,speed);
+	var st02 = new setWrapText(80,180,22,"“怎么办，我还有两个孩子需要照顾啊！”","black",true,140,true,28,speed);
 	bkLayer.addChild(st02);
 	var vt03 =new setWrapText(690,607,28,"亲友们通过朋友圈","black",false,32,true,32,3);
 	bkLayer.addChild(vt03);
@@ -571,15 +553,15 @@ function fiveTwo(){
 	bkLayer.addChild(vt04);
 	var box03 = getBitmap(imgList['box03']);
 	box03.x = 100;
-	box03.y = 505;
+	box03.y = 485;
 	bkLayer.addChild(box03);
-	var st03 = new setWrapText(150,530,22,"“我们都是看到朋友圈来给小芳献血的，她一定要挺过去。”","black",true,160,true,26,speed);
+	var st03 = new setWrapText(150,510,22,"“我们都是看到朋友圈来给小芳献血的，她一定要挺过去。”","black",true,160,true,26,speed);
 	bkLayer.addChild(st03);
 	var box04 = getBitmap(imgList['box04']);
 	box04.x = 465;
-	box04.y = 525;
+	box04.y = 505;
 	bkLayer.addChild(box04);
-	var st04 = new setWrapText(480,574,22,"“谢谢您的爱心。”","black",true,200,true,26,3);
+	var st04 = new setWrapText(480,554,22,"“谢谢您的爱心。”","black",true,200,true,26,3);
 	bkLayer.addChild(st04);
 	
 	var sence013 = getBitmap(imgList['sence013']);
@@ -596,7 +578,6 @@ function fiveTwo(){
 	bkLayer.addChild(vt06);
 	var st05 = new setWrapText(54,925,22,"“我不知道他们是谁，从事什么工作，但我相信，好人一生平安。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st05);
-	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	
 	sence011.alpha = 0;
 	sence012.alpha = 0;
@@ -668,59 +649,51 @@ function fiveThree(){
 	backLayer.addChild(bkLayer);
 	var fiveBkg = getBitmap(imgList['fiveBkg']);
 	bkLayer.addChild(fiveBkg);
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
-	life.y = 48;
-	life.alpha = 0;
-	bkLayer.addChild(life);
-	LTweenLite.to(life,1.0,{alpha:1.0})
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
 	var speed = 3;
 	var sence031 = getBitmap(imgList['sence031']);
 	sence031.x = 48;
-	sence031.y = 158;
+	sence031.y = 98;
 	bkLayer.addChild(sence031);
 	//box
 	var box01 = getBitmap(imgList['box05']);
 	box01.x = 400;
-	box01.y = 220;
+	box01.y = 160;
 	bkLayer.addChild(box01);
-	var st01 = new setWrapText(450,290,22,"“你父亲出了车祸，情况紧急必须马上手术，需要5000--6000毫升的O型血。但全市血库有限。”","black",true,250,true,28,speed);
+	var st01 = new setWrapText(450,230,22,"“你父亲出了车祸，情况紧急必须马上手术，需要5000--6000毫升的O型血。但全市血库有限。”","black",true,250,true,28,speed);
 	bkLayer.addChild(st01);
 	
-	var vt01 =new setWrapText(58,130,28,"几年前，海南完美无偿献血","black",false,750,false,32,3);
+	var vt01 =new setWrapText(58,70,28,"几年前，海南完美无偿献血","black",false,750,false,32,3);
 	bkLayer.addChild(vt01);
-	var vt02 =new setWrapText(30,170,28,"志愿者小成的父亲忽然出了车祸","black",false,750,false,32,3);
+	var vt02 =new setWrapText(30,110,28,"志愿者小成的父亲忽然出了车祸","black",false,750,false,32,3);
 	bkLayer.addChild(vt02);
 	
 	var sence032 = getBitmap(imgList['sence032']);
 	sence032.x = 48;
-	sence032.y = 580;
+	sence032.y = 540;
 	bkLayer.addChild(sence032);
 	var box02 = getBitmap(imgList['box06']);
 	box02.x = 10;
-	box02.y = 550;
+	box02.y = 510;
 	bkLayer.addChild(box02);
 	
 	
-	var st02 = new setWrapText(50,585,22,"“帮帮我，我爸出车祸进医院了，急需O型血。”","black",true,160,true,26,speed);
+	var st02 = new setWrapText(50,545,22,"“帮帮我，我爸出车祸进医院了，急需O型血。”","black",true,160,true,26,speed);
 	bkLayer.addChild(st02);
 	var box03 = getBitmap(imgList['box07']);
 	box03.x = 505;
-	box03.y = 525;
+	box03.y = 485;
 	bkLayer.addChild(box03);
-	var vt03 =new setWrapText(0,540,28,"向亲友求助无果","black",false,750,false,32,3);
+	var vt03 =new setWrapText(0,486,28,"向亲友求助无果","black",false,750,false,32,3);
 	vt03.x = rCenterWidth(vt03);
 	bkLayer.addChild(vt03);
-	var vt04 =new setWrapText(0,580,28,"的小成拨通了完美","black",false,750,false,32,3);
+	var vt04 =new setWrapText(0,526,28,"的小成拨通了完美","black",false,750,false,32,3);
 	vt04.x = rCenterWidth(vt04);
 	bkLayer.addChild(vt04);
-	var vt05 =new setWrapText(0,620,28,"公司的电话","black",false,750,false,32,3);
+	var vt05 =new setWrapText(0,564,28,"公司的电话","black",false,750,false,32,3);
 	vt05.x = rCenterWidth(vt05);
 	bkLayer.addChild(vt05);
 	
-	var st03 = new setWrapText(545,575,22,"“我们马上组织全省各地同血型的志愿者到医院献血。”","black",true,180,true,26,speed);
+	var st03 = new setWrapText(545,535,22,"“我们马上组织全省各地同血型的志愿者到医院献血。”","black",true,180,true,26,speed);
 	bkLayer.addChild(st03);
 	
 	var sence033 = getBitmap(imgList['sence033']);
@@ -731,14 +704,12 @@ function fiveThree(){
 	box04.x = 30;
 	box04.y = 1080;
 	bkLayer.addChild(box04);
-	var vt06 =new setWrapText(30,930,28,"父亲很快脱离了危险，小成从没想过","black",false,750,false,32,3);
+	var vt06 =new setWrapText(30,908,28,"父亲很快脱离了危险，小成从没想过","black",false,750,false,32,3);
 	bkLayer.addChild(vt06);
-	var vt07 =new setWrapText(58,965,28,"自己会变成无偿献血的受益者。","black",false,750,false,32,3);
+	var vt07 =new setWrapText(58,950,28,"自己会变成无偿献血的受益者。","black",false,750,false,32,3);
 	bkLayer.addChild(vt07);
 	var st04 = new setWrapText(65,1120,22,"“未来，我会把这种大爱无私的奉献精神传承下去，让更多像我这种遭遇的人得到及时的帮助和救援！”","black",true,200,true,26,speed);
 	bkLayer.addChild(st04);
-	
-	bkLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	sence031.alpha = 0;
 	sence032.alpha = 0;
 	sence033.alpha = 0;
@@ -802,61 +773,76 @@ function last(){
 		bkLayer.remove();
 	}});
 	clearInterval(heartTween);
-	var fiveBkg = getBitmap(imgList['fiveBkg']);
+	var fiveBkg = getBitmap(imgList['lastBkg']);
 	lastLayer.addChild(fiveBkg);
-	var life = getBitmap(imgList['life']);
-	life.x = rCenterWidth(life);
-	life.y = 180;
-	life.alpha = 0;
-	lastLayer.addChild(life);
-	LTweenLite.to(life,1.0,{alpha:1.0})
-	var thank1 = ["您勇敢地伸出臂膀，","奉献一点","您短短的几分钟","您的一滴血","献出多一点爱"];
-	var thank2 = ["托起生命的太阳。","让人生完美一点","就能延续他人的生命","完美一片爱","让世界更完美"];
-	var logo = getBitmap(imgList['logo']);
-	logo.x = rCenterWidth(logo);
-	logo.y = 310;
-	lastLayer.addChild(logo);
+	var thank = ["谢谢您,奉献一点,让人生完美一点","谢谢您,您的一滴血,完美一片爱","谢谢您,献出多一点爱,让世界更完美"];
 	//微信获取微信名
 
-    wName = new setText(0,560,36,window.nickname,"black",true);
+    wName = new setText(0,580,36,window.nickname,"black",true);
     wName.x = rCenterWidth(wName);
     lastLayer.addChild(wName);
     bigAndSmall(wName,2,2,1.0,0.05,0,true);
+	var c1 = fiveBkg = getBitmap(imgList['c1']);
+	c1.x = 185;
+	c1.y = 545;
+	lastLayer.addChild(c1);
 
+	var c2 = fiveBkg = getBitmap(imgList['c2']);
+	c2.x = 185;
+	c2.y = 601;
+	lastLayer.addChild(c2);
+
+	var c3 = fiveBkg = getBitmap(imgList['c3']);
+	c3.x = 524;
+	c3.y = 545;
+	lastLayer.addChild(c3);
+
+	var c4 = fiveBkg = getBitmap(imgList['c4']);
+	c4.x = 524;
+	c4.y = 601;
+	lastLayer.addChild(c4);
+	LTweenLite.to(c1,1.0,{rotate:-20,loop:true}).to(c1,1.0,{rotate:0});
+	LTweenLite.to(c2,1.0,{rotate:20,loop:true}).to(c2,1.0,{rotate:0});
+	LTweenLite.to(c3,1.0,{rotate:20,loop:true}).to(c3,1.0,{rotate:0});
+	LTweenLite.to(c4,1.0,{rotate:-20,loop:true}).to(c4,1.0,{rotate:0});
+	//心
+	var down = fiveBkg = getBitmap(imgList['down']);
+	down.x = 350;
+	down.y = 381;
+	lastLayer.addChild(down);
+	bigAndSmall(down,2,2,1.5,0.2,0,true);
+	var upheart = fiveBkg = getBitmap(imgList['upheart']);
+	upheart.x = 487;
+	upheart.y = 204;
+	lastLayer.addChild(upheart);
+	bigAndSmall(upheart,2,2,1.5,0.2,0,true);
 	//感谢语
-	var n = parseInt(Math.random()*5);
-	var thankWord = new setText(0,660,36,"谢谢您","black",false);
-	thankWord.x = rCenterWidth(thankWord);
+	var n = parseInt(Math.random()*3);
+	var thankWord = new setText(0,680,29,thank[n],"black",false);
+	thankWord.x = rCenterWidth(thankWord)+10;
 	lastLayer.addChild(thankWord);
-	var thankWord1 = new setText(0,720,36,thank1[n],"black",false);
-	thankWord1.x = rCenterWidth(thankWord1);
-	lastLayer.addChild(thankWord1);
-	var thankWord2 = new setText(0,780,36,thank2[n],"black",false);
-	thankWord2.x = rCenterWidth(thankWord2);
-	lastLayer.addChild(thankWord2);
 	//寻找ta
 	var searchTA = new LSprite();
 	searchTA.graphics.drawRect(0, "#000000", [0, 0, 300, 60], true, 'rgb(192,0,0)');
-	searchTA.y = 1070;
+	searchTA.y = 1150;
 	searchTA.x = rCenterWidth(searchTA);
 	lastLayer.addChild(searchTA);
 	bigAndSmall(searchTA,2,2,1.0,0.05,0,true);
 	searchTA.addEventListener(LMouseEvent.MOUSE_DOWN,share);
 	//寻找他文案
 	var wantTa = new setText(210, 1210, 32, "让爱继续传递", "white", false);
-	wantTa.y = 1084;
+	wantTa.y = 1164;
 	wantTa.x = rCenterWidth(wantTa);
 	lastLayer.addChild(wantTa);
 	bigAndSmall(wantTa,2,2,1.0,0.05,0,true);
 	//重温
 	var returnBack = new LSprite();
 	returnBack.graphics.drawRect(0, "#000000", [0, 0, 300, 60], true, 'rgb(192,0,0)');
-	returnBack.y = 970;
+	returnBack.y = 1230;
 	returnBack.x = rCenterWidth(returnBack);
 	lastLayer.addChild(returnBack);
 	bigAndSmall(returnBack,2,2,1.0,0.05,0,true);
 	returnBack.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
-		console.log(num);
 		switch(num) {
 			case 0:
 				five();
@@ -868,21 +854,19 @@ function last(){
 				fiveThree();
 				break;
 		}
-	})
+	});
 	//寻找他文案
 	var rBack = new setText(210, 1210, 32, "重温", "white", false);
-	rBack.y = 984;
+	rBack.y = 1244;
 	rBack.x = rCenterWidth(rBack);
 	lastLayer.addChild(rBack);
 	bigAndSmall(rBack,2,2,1.0,0.05,0,true);
-	lastLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	setHeartGroup();
 }
 function share(){
 	var shareLayer = new LSprite();
-	backLayer.addChild(shareLayer);
+	musicLayer.addChild(shareLayer);
 	shareLayer.graphics.drawRect(0, "#000000", [0, 0, 750,1336], true, 'rgba(0,0,0,0.75)');
-	backLayer.addChild(shareLayer);
 	var share = getBitmap(imgList['share']);
 	shareLayer.addChild(share);
 	
@@ -894,10 +878,11 @@ function share(){
 	
 	shareLayer.addEventListener(LMouseEvent.MOUSE_DOWN,function(){
 		shareLayer.remove();
-	})
+	});
 }
 function transition (){
 	backLayer.removeAllChild();
+	clearInterval(heartTween);
 	var transitions = getBitmap(imgList['transition']);
 	backLayer.addChild(transitions);
 	var bheart = getBitmap(imgList['bheart']);
@@ -922,6 +907,5 @@ function transition (){
 			setTimeout(fiveChoice,2000);
 		});
 	});
-	backLayer.addChild(new musicBtn(676,20,1,1,imgList['music'],'Jaudio'));
 	setHeartGroup();
 }

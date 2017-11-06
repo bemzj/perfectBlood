@@ -10,6 +10,7 @@ var loadImg = [
 ]
 //加载的图片的资源
 var gameImg = [
+	{path:'img/lifes.png',type:'img',name:'lifes'},//ta
 	{path:'img/bheart.png',type:'img',name:'bheart'},//心
 	{path:'img/music.png',type:'img',name:'music'},//音乐
 	{path:'img/logo.png',type:'img',name:'logo'},//完美logo
@@ -56,7 +57,14 @@ var gameImg = [
 	{path:'img/share.png?v=2',type:'img',name:'share'},//分享
 	{path:'img/shareTitle.png?v=2',type:'img',name:'shareTitle'},//分享语
 	{path:'img/transition.jpg?v=2',type:'img',name:'transition'},//过度页面
-]
+	{path:'img/lastBkg.jpg',type:'img',name:'lastBkg'},//背景
+	{path:'img/c1.png',type:'img',name:'c1'},//c1
+	{path:'img/c2.png',type:'img',name:'c2'},//c2
+	{path:'img/c3.png',type:'img',name:'c3'},//c3
+	{path:'img/c4.png',type:'img',name:'c4'},//c4
+	{path:'img/down.png',type:'img',name:'down'},//下心
+	{path:'img/upheart.png',type:'img',name:'upheart'},//上心
+];
 //全局变量
 var backLayer,loadLayer,loadText,logo,flower,hTween,heart,bkLayer,imgList,heartTween,num;
 //上传
