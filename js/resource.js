@@ -1,7 +1,7 @@
 //加载页面的图片
 var loadImg = [
 	{path:'img/logo.png',type:'img',name:'logo'},//完美logo
-	{path:'img/backImg.png',type:'img',name:'backImg'},//背景图片
+	{path:'img/backImg.png?v=1',type:'img',name:'backImg'},//背景图片
 	{path:'img/heart.png',type:'img',name:'heart'},//心
 	{path:'img/back.jpg',type:'img',name:'back'},//背景图片
 	{path:'img/topImg.png',type:'img',name:'topImg'},//高光
@@ -13,7 +13,7 @@ var gameImg = [
 	{path:'img/lifes.png',type:'img',name:'lifes'},//ta
 	{path:'img/bheart.png',type:'img',name:'bheart'},//心
 	{path:'img/music.png',type:'img',name:'music'},//音乐
-	{path:'img/logo.png',type:'img',name:'logo'},//完美logo
+	{path:'img/logo.png?v=1',type:'img',name:'logo'},//完美logo
 	{path:'img/hand.png',type:'img',name:'hand'},//手
 	{path:'img/hand2.png',type:'img',name:'hand2'},//手
 	{path:'img/person.png',type:'img',name:'person'},//人
@@ -40,7 +40,7 @@ var gameImg = [
 	{path:'img/sence013.png',type:'img',name:'sence013'},//场景3
 	{path:'img/sence021.png',type:'img',name:'sence021'},//场景1
 	{path:'img/sence022.png',type:'img',name:'sence022'},//场景2
-	{path:'img/sence023.png',type:'img',name:'sence023'},//场景3
+	{path:'img/sence023.png?v=1',type:'img',name:'sence023'},//场景3
 	{path:'img/sence031.png',type:'img',name:'sence031'},//场景1
 	{path:'img/sence032.png',type:'img',name:'sence032'},//场景2
 	{path:'img/sence033.png',type:'img',name:'sence033'},//场景3
