@@ -51,6 +51,8 @@ function loadImging(result){
 	bkLayer.addChild(loadText);
 	//logo
 	logo = getBitmap(result['logo']);
+	logo.scaleX = 0.8;
+	logo.scaleY = 0.8;
 	logo.x = rCenterWidth(logo);
 	logo.y = 848;
 	bkLayer.addChild(logo);
