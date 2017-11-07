@@ -13,7 +13,7 @@ var gameImg = [
 	{path:'img/lifes.png?V=2',type:'img',name:'lifes'},//ta
 	{path:'img/bheart.png',type:'img',name:'bheart'},//心
 	{path:'img/music.png',type:'img',name:'music'},//音乐
-	{path:'img/logo.png?v=1',type:'img',name:'logo'},//完美logo
+	{path:'img/logo.png?v=2',type:'img',name:'logo'},//完美logo
 	{path:'img/hand.png',type:'img',name:'hand'},//手
 	{path:'img/hand2.png',type:'img',name:'hand2'},//手
 	{path:'img/person.png',type:'img',name:'person'},//人
